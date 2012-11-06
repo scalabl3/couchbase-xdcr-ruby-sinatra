@@ -79,7 +79,8 @@ get '/pools/default/buckets' do
   
   5.times { puts }
   puts 'GET requested /pools/default/buckets'
-    
+  puts params.inspect
+  
   out = [
     {
       :bucketCapabilities => [ "couchapi" ],
@@ -94,12 +95,12 @@ get '/pools/default/buckets' do
         :serverList => [ "#{XDCR_RECEIVER}:#{XDCR_PORT}" ],
         :vBucketMap => VBucketMap
       },
-      :uuid => "00000000000000000000000000000000",
-      :uri => "/pools/default/buckets/#{XDCR_BUCKET}?bucket_uuid=00000000000000000000000000000000"
+      :uuid => UUID_BUCKET,
+      :uri => "/pools/default/buckets/#{XDCR_BUCKET}?bucket_uuid=#{UUID_BUCKET}"
     }
   ]
   
-  puts out.to_json
+  #puts out.to_json
   out.to_json
 end
 
@@ -127,12 +128,12 @@ get '/pools/default/buckets/:bucket' do
         :serverList => [ "#{XDCR_RECEIVER}:#{XDCR_PORT}" ],
         :vBucketMap => vBucketMap
       },
-      :uuid => "00000000000000000000000000000000",
-      :uri => "/pools/default/buckets/#{XDCR_BUCKET}?bucket_uuid=00000000000000000000000000000000"
+      :uuid => UUID_BUCKET,
+      :uri => "/pools/default/buckets/#{XDCR_BUCKET}?bucket_uuid=#{UUID_BUCKET}"
     }
   ]
   
-  puts out.to_json
+  #puts out.to_json
   out.to_json
 end
 
@@ -163,13 +164,15 @@ end
 
 
 
-get '/:database/:docid' do #(GET)
+get '/:database/:vbucket;:uuid/' do #(GET)
   require_basic_auth
   content_type :json
   
   5.times { puts }
-  puts "GET requested [database] /#{params[:database]}/#{params[:docid]}"
+  puts "GET requested [database] /#{params[:database]}/#{params[:vbucket]};#{:uuid}"
+  puts params.inspect
   
+    
   if params[:database] == XDCR_BUCKET 
     status 200
     nil
@@ -187,6 +190,7 @@ post '/:database/_ensure_full_commit' do  #(POST)
   content_type :json
   
   5.times { puts }
+  puts params.inspect
   puts "POST requested [database] /#{params[:database]}/_ensure_full_commit"
   status 201
 
@@ -204,6 +208,7 @@ post '/{database}/_revs_diff' do  #(POST)
   content_type :json
   
   5.times { puts }
+  puts params.inspect
   puts "POST requested [database] /#{params[:database]}/_revs_diff"
   status 201
   
@@ -218,6 +223,8 @@ post '/:database/_bulk_docs' do #(POST)
   content_type :json
   
   5.times { puts }
+  puts params.inspect
+  puts params[:data].inspect if params[:data]
   puts "POST requested [database] /#{params[:database]}/_bulk_docs"
   status 201
   

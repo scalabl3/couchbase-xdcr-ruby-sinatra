@@ -32,17 +32,13 @@ $ ruby xdcr.rb
 **WORKING**
 
 - /pools (GET)
-
-**FAILING**
-
 - /pools/default (GET)
-
-**NOT DONE**
-
 - /pools/default/buckets (GET)
 - /pools/default/buckets/{bucket} (GET)
 - /{database} (HEAD, GET)
 - /{database}/{docid} (GET)
+
+**NOT POSTING NEED TO CHECK**
 - /{database}/_ensure_full_commit (POST)
 - /{database}/_revs_diff (POST)
 - /{database}/_bulk_docs (POST)
