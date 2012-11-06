@@ -36,16 +36,19 @@ $ ruby xdcr.rb
 - /pools/default/buckets (GET) 
 - /pools/default/buckets/{bucket} (GET) 
 - /{database} (HEAD, GET)
-- /{database}/master/{vbucket};{uuid} **GETTING STUCK HERE**
+- /{database}/{vbucket};{uuid}
+- /{database}/master/{vbucket};{uuid}
 - /{database}/{docid} (GET)
 
-**NOT POSTING YET**
 - /{database}/_ensure_full_commit (POST)
-- /{database}/_revs_diff (POST)
+- /{database}/_revs_diff (POST) **GETTING STUCK HERE on the Response**
 - /{database}/_bulk_docs (POST)
 
 # Currently Working on... #
 
 ***Current Error***
-2012-11-06 13:52:45 - Error replicating vbucket 9: 
-  {db_not_found, <<"http://Administrator:*****@127.0.0.1:4567/default/master;9e4d14d5a9be45cba5ec5534f42e129b/">>}
+Error replicating vbucket 965: 
+
+```javascript
+{{nocatch, {bad_request, <<"Invalid rev format">>}}, [{couch_doc,parse_rev,1}, {couch_api_wrap, '-get_missing_revs/2-fun-0-', 1}, {lists,map,2}, {couch_api_wrap, '-get_missing_revs/2-fun-1-', 3}, {xdc_vbucket_rep_worker, find_missing,2}, {xdc_vbucket_rep_worker, queue_fetch_loop,4}]}
+```
