@@ -39,9 +39,12 @@ $ ruby xdcr.rb
 - /{database}/{vbucket};{uuid}
 - /{database}/master/{vbucket};{uuid}
 - /{database}/{docid} (GET)
-
 - /{database}/_ensure_full_commit (POST)
-- /{database}/_revs_diff (POST) **GETTING STUCK HERE on the Response**
+
+**PARTIAL**
+- /{database}/_revs_diff (POST) **GETTING STUCK HERE on the Response Back**
+
+**NOT TESTED YET**
 - /{database}/_bulk_docs (POST)
 
 # Currently Working on... #
