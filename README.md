@@ -49,6 +49,16 @@ $ ruby xdcr.rb
 ***Current Error***
 Error replicating vbucket 965: 
 
-```javascript
-{{nocatch, {bad_request, <<"Invalid rev format">>}}, [{couch_doc,parse_rev,1}, {couch_api_wrap, '-get_missing_revs/2-fun-0-', 1}, {lists,map,2}, {couch_api_wrap, '-get_missing_revs/2-fun-1-', 3}, {xdc_vbucket_rep_worker, find_missing,2}, {xdc_vbucket_rep_worker, queue_fetch_loop,4}]}
-```
+
+    {
+      { nocatch,  { bad_request, <<"Invalid rev format">> }
+      }, 
+      [
+        { couch_doc,parse_rev,1 }, 
+        { couch_api_wrap, '-get_missing_revs/2-fun-0-', 1 }, 
+        { lists,map,2 }, 
+        { couch_api_wrap, '-get_missing_revs/2-fun-1-', 3 }, 
+        { xdc_vbucket_rep_worker, find_missing,2 }, 
+        { xdc_vbucket_rep_worker, queue_fetch_loop,4 }
+      ]
+    }
