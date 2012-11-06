@@ -43,3 +43,10 @@ $ ruby xdcr.rb
 - /{database}/_revs_diff (POST)
 - /{database}/_bulk_docs (POST)
 
+# Currently Working on... #
+
+***Current Error***
+This is for every vBucket number
+
+2012-11-06 11:02:33 - Error replicating vbucket 955: 
+{db_not_found, <<"http://Administrator:*****@127.0.0.1:4567/default/955;9e4d14d5a9be45cba5ec5534f42e129b/">>}
