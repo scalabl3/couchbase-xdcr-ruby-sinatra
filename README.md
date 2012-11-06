@@ -33,12 +33,13 @@ $ ruby xdcr.rb
 
 - /pools (GET)
 - /pools/default (GET)
-- /pools/default/buckets (GET) **GETTING STUCK HERE**
+- /pools/default/buckets (GET) 
 - /pools/default/buckets/{bucket} (GET) 
 - /{database} (HEAD, GET)
+- /{database}/master/{vbucket};{uuid} **GETTING STUCK HERE**
 - /{database}/{docid} (GET)
 
-**NOT POSTING NEED TO CHECK**
+**NOT POSTING YET**
 - /{database}/_ensure_full_commit (POST)
 - /{database}/_revs_diff (POST)
 - /{database}/_bulk_docs (POST)
@@ -46,11 +47,5 @@ $ ruby xdcr.rb
 # Currently Working on... #
 
 ***Current Error***
-VBucketMap = [ [0,-1] * 1024]
-
-2012-11-06 11:02:33 - Error replicating vbucket 955: 
-{db_not_found, <<"http://Administrator:*****@127.0.0.1:4567/default/955;9e4d14d5a9be45cba5ec5534f42e129b/">>}
-
-
-if VBucketMap = [ [1,-1] * 1024 ]
-2012-11-06 11:20:12 - Error replicating vbucket 955: {badrecord,dict}
+2012-11-06 13:52:45 - Error replicating vbucket 9: 
+  {db_not_found, <<"http://Administrator:*****@127.0.0.1:4567/default/master;9e4d14d5a9be45cba5ec5534f42e129b/">>}
