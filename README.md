@@ -49,7 +49,6 @@ $ ruby xdcr.rb
 ***Current Error***
 Error replicating vbucket 965: 
 
-
     {
       { nocatch,  { bad_request, <<"Invalid rev format">> }
       }, 
