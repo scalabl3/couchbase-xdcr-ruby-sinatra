@@ -33,7 +33,7 @@ $ ruby xdcr.rb
 
 - /pools (GET)
 
-**FAIL**
+**FAILING**
 
 - /pools/default (GET)
 
