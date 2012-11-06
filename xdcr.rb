@@ -19,8 +19,8 @@ XDCR_BUCKET = "default"
 UUID_POOL = "3b5211459ec34c589522f78c2284099e" #SecureRandom.uuid.gsub("-", "")
 UUID_BUCKET = "9e4d14d5a9be45cba5ec5534f42e129b" #SecureRandom.uuid.gsub("-", "")
 VBucketMap = []
-1024.times { VBucketMap << [0,-1] }
-
+1024.times { VBucketMap << [1,-1] }
+puts VBucketMap.size
 
 
 

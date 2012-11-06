@@ -33,8 +33,8 @@ $ ruby xdcr.rb
 
 - /pools (GET)
 - /pools/default (GET)
-- /pools/default/buckets (GET)
-- /pools/default/buckets/{bucket} (GET)
+- /pools/default/buckets (GET) **GETTING STUCK HERE**
+- /pools/default/buckets/{bucket} (GET) 
 - /{database} (HEAD, GET)
 - /{database}/{docid} (GET)
 
@@ -46,7 +46,11 @@ $ ruby xdcr.rb
 # Currently Working on... #
 
 ***Current Error***
-This is for every vBucket number
+VBucketMap = [ [0,-1] * 1024]
 
 2012-11-06 11:02:33 - Error replicating vbucket 955: 
 {db_not_found, <<"http://Administrator:*****@127.0.0.1:4567/default/955;9e4d14d5a9be45cba5ec5534f42e129b/">>}
+
+
+if VBucketMap = [ [1,-1] * 1024 ]
+2012-11-06 11:20:12 - Error replicating vbucket 955: {badrecord,dict}
