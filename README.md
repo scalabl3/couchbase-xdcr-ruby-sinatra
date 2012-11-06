@@ -6,6 +6,7 @@
 
 ```ruby
 gem 'sinatra'
+gem 'sinatra-basicauth'
 gem 'json'
 gem 'active_support' # for generating UUID's
 ```

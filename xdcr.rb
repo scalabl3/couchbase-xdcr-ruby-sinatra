@@ -28,7 +28,6 @@ get '/pools' do
       :name => "default",
       :uri => "/pools/default?uuid=#{UUID_POOL}",      
       }],
-
     :uuid => UUID_POOL
   }
   
