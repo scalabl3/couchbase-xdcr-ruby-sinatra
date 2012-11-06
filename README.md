@@ -2,6 +2,14 @@
 
 **When working**, can be used to "do stuff" with documents as they are streamed through XDCR to Sinatra. Still a work in progress...
 
+# Pre-Requisites
+
+```ruby
+gem 'sinatra'
+gem 'json'
+gem 'active_support' # for generating UUID's
+```
+
 # Usage
 
 ```bash
