@@ -27,5 +27,23 @@ $ ruby xdcr.rb
   
 #### Right now not everything is working for the Cluster Reference to work all the way through the Registration Process
 
+Couchbase Requests supported:
 
+** WORKING **
+
+- /pools (GET)
+
+** FAIL **
+
+- /pools/default (GET)
+
+** NOT DONE **
+
+- /pools/default/buckets (GET)
+- /pools/default/buckets/{bucket} (GET)
+- /{database} (HEAD, GET)
+- /{database}/{docid} (GET)
+- /{database}/_ensure_full_commit (POST)
+- /{database}/_revs_diff (POST)
+- /{database}/_bulk_docs (POST)
 
