@@ -1,6 +1,6 @@
 # Cross-Data Center Replication (XDCR) Simulator in Sinatra
 
-**When working**, can be used to "do stuff" with documents as they are streamed through XDCR to Sinatra. Still a work in progress...
+Can be used to "do stuff" with documents as they are streamed through XDCR to Sinatra. Still a work in progress...
 
 # Pre-Requisites
 
@@ -40,27 +40,8 @@ $ ruby xdcr.rb
 - /{database}/master/{vbucket};{uuid}
 - /{database}/{docid} (GET)
 - /{database}/_ensure_full_commit (POST)
-
-**PARTIAL**
-- /{database}/_revs_diff (POST) **GETTING STUCK HERE on the Response Back**
-
-**NOT TESTED YET**
+- /{database}/_revs_diff (POST) 
 - /{database}/_bulk_docs (POST)
 
-# Currently Working on... #
+# It works now!
 
-***Current Error***
-Error replicating vbucket 965: 
-
-    {
-      { nocatch,  { bad_request, <<"Invalid rev format">> }
-      }, 
-      [
-        { couch_doc,parse_rev,1 }, 
-        { couch_api_wrap, '-get_missing_revs/2-fun-0-', 1 }, 
-        { lists,map,2 }, 
-        { couch_api_wrap, '-get_missing_revs/2-fun-1-', 3 }, 
-        { xdc_vbucket_rep_worker, find_missing,2 }, 
-        { xdc_vbucket_rep_worker, queue_fetch_loop,4 }
-      ]
-    }

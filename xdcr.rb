@@ -251,24 +251,6 @@ def response_db_master(method, database, master, uuid)
 end
 
 
-
-
-post '/:database/_ensure_full_commit' do  #(POST)
-  require_basic_auth
-  content_type :json
-  
-  5.times { puts }
-  puts params.inspect
-  puts "POST requested [database] /#{params[:database]}/_ensure_full_commit"
-  status 201
-
-  out = { :ok => true }
-  
-  puts out.to_json
-  out.to_json
-end
-
-
 revs_diff_regex = %r{[\/]([\w]+)([\/]|%2f|%2F)([\w]+)([;]|%3b|%3B)([\w]+)[\/](_revs_diff)}
 
 post revs_diff_regex do  #(POST)
@@ -276,6 +258,7 @@ post revs_diff_regex do  #(POST)
   content_type :json
   
   5.times { puts }
+  puts "POST requested [database] /_revs_diff"
   #puts "POST requested [database] /#{params[:captures][0]}/_revs_diff"
   #puts params.class.to_s
   #json = JSON.parse(params[0][0]) if params && params[0]
@@ -288,13 +271,13 @@ post revs_diff_regex do  #(POST)
   raw_data = request.body.read
   data = JSON.parse raw_data
   puts raw_data
-  puts data.inspect
+  #puts data.inspect
   puts
   
   
   out = {} # "03ee06461a12f3c288bb865b22000170": {"missing": ["2-3a24009a9525bde9e4bfa8a99046b00d"]} }
   data.each_pair do |k,v|
-    out[k] = { :missing => [v] }
+    out[k] = { :missing => v }
   end
   
   #params.each_pair do |k,v|
@@ -303,19 +286,39 @@ post revs_diff_regex do  #(POST)
   
   status 200
   
-  puts out.to_json
+  puts "RESPONSE: #{out.to_json}"
   out.to_json
 end
 
 
 
+ensure_commit_regex = %r{[\/]([\w]+)([\/]|%2f|%2F)([\w]+)([;]|%3b|%3B)([\w]+)[\/](_ensure_full_commit)}
 
-post '/:database/_bulk_docs' do #(POST)
+post ensure_commit_regex do  #(POST)
   require_basic_auth
   content_type :json
   
   5.times { puts }
-  puts "POST requested [database] /#{params[:database]}/_bulk_docs"
+  #puts params.inspect
+  puts "POST requested [database] /_ensure_full_commit"
+  status 201
+
+  out = { :ok => true }
+  
+  #puts out.to_json
+  out.to_json
+end
+
+
+bulk_docs_regex = %r{[\/]([\w]+)([\/]|%2f|%2F)([\w]+)([;]|%3b|%3B)([\w]+)[\/](_bulk_docs)}
+
+post bulk_docs_regex do #(POST)
+  require_basic_auth
+  content_type :json
+  
+  5.times { puts }
+  puts "POST requested [database] /_bulk_docs"
+  #puts "POST requested [database] /#{params[:database]}/_bulk_docs"
   
   request.body.rewind  # in case someone already read it
   data = JSON.parse request.body.read
