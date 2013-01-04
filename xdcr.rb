@@ -126,7 +126,7 @@ get '/pools/default/buckets/:bucket' do
       :name => XDCR_BUCKET,
       :vBucketServerMap => {
         :serverList => [ "#{XDCR_RECEIVER}:#{XDCR_PORT}" ],
-        :vBucketMap => vBucketMap
+        :vBucketMap => VBucketMap
       },
       :uuid => UUID_BUCKET,
       :uri => "/pools/default/buckets/#{XDCR_BUCKET}?bucket_uuid=#{UUID_BUCKET}"
